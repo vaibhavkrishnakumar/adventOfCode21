@@ -1,5 +1,4 @@
 import scala.io.Source
-import scala.collection.mutable.Seq
 
 object Day2 {
 
