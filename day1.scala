@@ -15,7 +15,7 @@ object Day1 {
     val pairs = input zip shifted
     val answer = pairs.map((first, second) => first - second).filter(_ < 0).size
 
-    println(s"Answer to Part 1 is $answer")
+    println(s"Answer is $answer")
   }
 
 }
