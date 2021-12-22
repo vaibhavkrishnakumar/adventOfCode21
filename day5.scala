@@ -27,24 +27,18 @@ object Day5 {
   private def toPointsOnLine : (Line => Seq[(Int, Int)]) = {
     line => if (line.x1 == line.x2) {
       // vertical
-      val (min, max) = minMax(line.y1, line.y2)
-      for (y <- min to max) yield (line.x1, y)
+      val step = if (line.y1 < line.y2) then 1 else -1
+      for (y <- line.y1 to line.y2 by step) yield (line.x1, y)
     } else if (line.y1 == line.y2) {
       // horizontal
-      val (min, max) = minMax(line.x1, line.x2)
-      for (x <- min to max) yield (x, line.y1)
+      val step = if (line.x1 < line.x2) then 1 else -1
+      for (x <- line.x1 to line.x2 by step) yield (x, line.y1)
     } else {
       // 45deg diagonal
       val stepX = if (line.x1 < line.x2) then 1 else -1
       val stepY = if (line.y1 < line.y2) then 1 else -1
       (line.x1 to line.x2 by stepX).zip(line.y1 to line.y2 by stepY)
     }
-  }
-
-  private def minMax(a:Int, b:Int) : (Int, Int) = {
-    val min = Math.min(a, b)
-    val max = if (min == a) b else a
-    (min, max)
   }
 
 }
